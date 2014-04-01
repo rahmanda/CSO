@@ -1,0 +1,406 @@
+/*Basic reset*/
+* {margin: 0; padding: 0;}
+html {overflow-y: scroll;}
+@media all and (min-width: 963px) {
+  #box-border  {
+    width:80%;
+  }
+  .textarea {
+	width: 70%;
+  }
+}
+@media all and (max-width: 962px) and (min-width: 823px) {
+  #box-border  {
+    width:72%;
+  }
+  .textarea {
+	max-width: 70%;
+  }
+}
+@media all and (max-width: 822px) and (min-width: 782px) {
+  #box-border  {
+    width:67%;
+  }
+  .textarea {
+	max-width: 70%;
+  }
+}
+@media all and (max-width: 678px){
+  #box-border  {
+    width:67%;
+  }
+  .info-content p  {
+    font-size: 10px;
+  }
+  .textarea {
+	max-width: 70%;
+  }
+}
+
+body {
+	background: url("img/mooning.png") repeat;
+	background-color: lightgray;
+	font-family: 'Noto Sans', tahoma, verdana;
+}
+aside {
+	float: left;
+	min-width: 210px;
+	max-width: 20%;
+}
+p {
+	font-size: 12px;
+}
+li {
+	list-style-type: none;
+}
+#accordian {
+	background: #0c4467;
+	color: black;
+	/*Some cool shadow and glow effect*/
+	box-shadow: 
+		0 5px 15px 1px rgba(0, 0, 0, 0.6);
+}
+/*heading styles*/
+#accordian h3 {
+	font-size: 12px;
+	line-height: 34px;
+	padding: 0 10px;
+	cursor: pointer;
+	/*fallback for browsers not supporting gradients*/
+	background: #BABABA; /* #003040; */ 
+	background: linear-gradient(#F1F1F1,#BABABA); /* #002535 */
+	transition: all 0.15s;
+}
+/*heading hover effect*/
+#accordian h3:hover {
+	color: white;
+	background: linear-gradient(#237ca1, #145d7b);
+	border-left: 5px none;
+}
+#accordian ul li a:hover {
+	color: white;
+	background: linear-gradient(#237ca1, #145d7b);
+	border-left: 5px none;
+}
+/*iconfont styles*/
+#accordian h3 span {
+	font-size: 16px;
+	margin-right: 10px;
+}
+/*list items*/
+#accordian li {
+	list-style-type: none;
+}
+/*links*/
+#accordian ul ul li a {
+	color: white;
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 27px;
+	display: block;
+	padding: 0 15px;
+	/*transition for smooth hover animation*/
+	transition: all 0.15s;
+}
+/*hover effect on links*/
+#accordian ul ul li a:hover {
+	background: #042f4b;
+	border-left: 5px solid lightblue;
+}
+#accordian ul ul li a: {
+	background: #042f4b;
+	border-left: 5px solid lightblue;
+}
+/*Lets hide the non active LIs by default*/
+#accordian ul ul {
+	display: none;
+}
+#accordian li.active ul {
+	display: block;
+}
+a {
+	color: inherit;
+	text-decoration: none;
+}
+/*================USER PROFILE===============*/
+#user-profile {
+	background: linear-gradient(#0c4467, #042f4b);
+	box-shadow: 0 5px 15px 1px rgba(0, 0, 0, 0.6);
+	padding: 15px;
+	min-height: 79px;
+	max-height: 100px;
+}
+div.user-img {
+	float: left;
+	margin-right: 5px;
+	margin-bottom: 8px;
+	width: 60px;
+	height: 60px;
+	overflow: hidden;
+	border-radius: 3px 3px 3px 3px;
+	box-shadow: 1px 1px 1px 1px rgba(255,255,255,0.6);
+}
+header {
+	background: linear-gradient(#0c4467, #042f4b);
+	color: white;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.6);
+	padding: 10px 10px 10px 30px;
+	z-index: 50px;
+}
+.button {
+	opacity: 1;
+	-webkit-transition: opacity .2s linear;
+	color: white;
+	background: linear-gradient(#0067b3,#013069);
+	border-top: 1px solid rgba(255,255,255,0.5);
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.6);
+	font-size: 12px;
+	padding: 5px 10px 5px 10px;
+	border-radius: 10px;
+	float: right;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+	opacity: 80%;
+	cursor: pointer;
+}
+.button.red{
+	margin-right: 10px;
+	background: linear-gradient(#a40000,#400000);
+}
+.button.red:hover {
+	opacity: .8;
+	background: linear-gradient(#400000, #a40000);
+}
+.button:hover{
+	opacity: .8;
+	background: linear-gradient(#013069, #0067b3);
+}
+.greeting {
+	float: right;
+	padding-right: 30px;
+}
+.greeting p{
+	font-size: 12px;
+	color: #33acdf;
+}
+.greeting h3{
+	font-size: 15px;
+	color: white;
+}
+#message-info{
+	position: absolute;
+	margin-top: 2px;
+	font-size: 12px;
+	color: white;
+}
+#message-info span{
+	font-size: 12px;
+	color: gray;
+}
+.breadcrumb {
+	min-height: 35px;
+	padding: 10px 0 0 10px;
+	background: #BABABA; /* #003040; */ 
+	background: linear-gradient(#F1F1F1,#BABABA); /* #002535 */
+	box-shadow: 
+		0 0 15px 0 rgba(0, 0, 0, 0.6);
+	border-bottom: 1px solid lightgrey;
+}
+.breadcrumb li{
+	margin-left: 20px;
+	font-size: 12px;
+}
+.breadcrumb ul li {
+	display: inline;
+}
+.icon-home {
+	font-size: 20px;
+}
+.icon-home:hover{
+	color: #707070;
+}
+#box-border {
+	position: absolute;
+	float: left;
+	margin-top: 70px;
+	margin-left: 230px;
+	margin-right: 15px;
+    background: rgba(33,40,44,0.7);
+    border: 1px solid #25333c;
+	border-top: 1px solid lightgrey;
+    border-radius: 5px 5px 5px 5px;
+    padding: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.block-header{
+	background: linear-gradient(#ffffff, #cfdee5);
+    min-height: 38px;
+    border: 1px solid #4b5e6b;
+    border-bottom: 1px solid #9ba6ab;
+    margin-bottom: -2px;
+    position: relative;
+    z-index: 5
+}
+.block-header h1{
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	padding-left: 10px;
+	line-height: 37px;
+	float: left;
+}
+h1 {
+	color: #475d68;
+	text-shadow: 0 1px 0 #fff;
+	line-height: 10px;
+}
+.block-header span {
+	float: right;
+	font-size: 25px;
+	color: #9ba6ab;
+	margin-top: 5px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.info-content{
+	max-width: 50%; /*edit lagi*/
+	float: left;
+	margin: 20px 0 0 30px;
+}
+.block-content{
+	background: rgba(255,255,255, 0.95);
+	border: 1px solid #4b5e6b;
+}
+ul.shortcut-list {
+	display: block;
+	overflow: hidden;
+	margin-left: 70px;
+	margin-right: 30px;
+	margin-top: 10px;
+}
+ul.shortcut-list li {
+	background: linear-gradient(#F1F1F1,#BABABA);
+	border: 1px solid #bcbcbc;
+	float: left;
+	font-size: 13px;
+	overflow: hidden;
+	margin: 10px 5px;
+	cursor: pointer;
+	border-radius: 5px 5px 5px 5px;
+}
+ul.shortcut-list li:hover {
+	background: linear-gradient(#BABABA, #F1F1F1);
+}
+ul.shortcut-list li a {
+	color: #515151;
+}
+ul.shortcut-list li a:hover {
+	padding-top: 10px;
+}
+ul.shortcut-list li a {
+	display: inline-block;
+	position: relative;
+	text-align: center;
+	width: 90px;
+	height: 68px;
+	padding: 10px 5px;
+	overflow: hidden;
+}
+ul.shortcut-list li img {
+	display: block;
+	margin: 0 auto;
+	padding-bottom: 0px;
+	overflow: hidden;
+}
+.inline-small-label{
+	font-size: 13px;
+	padding-left: 20px;
+}
+.inline-small-label label{
+	display: block;
+	font-size: 13px;
+	float: left;
+	cursor: pointer;
+}
+.inline-small-label input.text {
+	width: 595px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+}
+.inline-small-label input.date,  .inline-small-label input.notelp, .inline-small-label input.upload{
+	width: 100px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+}
+.inline-small-label input.number{
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+}
+.inline-small-label div.jk, .inline-small-label div.status, select.idpeg{
+	display: block;
+	margin-left: 100px;
+}
+.inline-small-label div.status{
+	margin-bottom: 10px;
+}
+.textarea{
+	margin-left: 100px;
+	margin-bottom: 10px
+}
+.actions ul {
+    list-style: none;
+    list-style-image: none;
+    padding: 0;
+    margin-top: 5px
+}
+.action-left {
+	float: left;
+	margin-left: 20px;
+}
+.action-right {
+	float: right;
+	margin-right: 20px;
+}
+.actions {
+    margin: 0 -10px -10px -10px;
+    background: url("img/container/block/block-actions-bg.png") repeat-x scroll bottom left transparent;
+    border-radius: 0 0 5px 5px;
+    height: 44px;
+    overflow: hidden
+}
+select.departemen, select.shift {
+	width: 75px;
+	display: block;
+}
+div.departemen, div.shift {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 100px;
+}
+tr.dibaca {
+	font-weight: bold;
+}
+.profile td, .gaji td{
+	font-size: 13px;
+	padding : 10px 10px 10px 10px;
+}
+label.upload{
+	width: 100px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+input.text {
+	max-width: 40%;
+}
+.shortcut { -webkit-transition: all .2s ease-in-out; }
+.shortcut:hover { -webkit-transform: scale(1.1); }
+img.edit, img.hapus {-webkit-transition: all .2s ease-in-out;}
+img.edit:hover, img.hapus{ -webkit-transform: scale(1.1); }

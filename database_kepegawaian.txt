@@ -1,0 +1,143 @@
+CREATE TABLE pegawai (
+	idPeg CHAR(9) NOT NULL,
+	namaDep VARCHAR(15) NOT NULL,
+	namaBel VARCHAR(15) NOT NULL,
+	tglLahir DATE,
+	alamat VARCHAR(30),
+	JK CHAR,
+	noTlp CHAR(12) NOT NULL,
+	idDept INT NOT NULL,
+	idShift CHAR(9) NOT NULL,
+	Status CHAR(9) NOT NULL
+);
+
+CREATE TABLE departemen (
+	idDept INT NOT NULL,
+	namaDept VARCHAR(15) NOT NULL,
+	idMgr CHAR(9) NOT NULL
+); 
+
+CREATE TABLE proyek (
+	idPro INT NOT NULL,
+	namaPro VARCHAR(15) NOT NULL,
+	idDept INT NOT NULL
+);
+
+CREATE TABLE tanggungan (
+	idPeg CHAR(9) NOT NULL,
+	namaTgn VARCHAR(50) NOT NULL,
+	JK CHAR,
+	tglLahir DATE,
+	hubungan VARCHAR(8)
+);
+
+CREATE TABLE shift (
+	idShift CHAR(9) NOT NULL,
+	periode VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE kinerja (
+	idPeg CHAR(9) NOT NULL,
+	idPro CHAR(9) NOT NULL,
+	statusProyek VARCHAR(50) NOT NULL,
+	deadline DATE NOT NULL
+);
+
+CREATE TABLE gaji (
+	idPeg CHAR(9) NOT NULL,
+	gajiPokok VARCHAR(9) NOT NULL,
+	makan VARCHAR(9),
+	tanggungan VARCHAR(9)
+);
+
+CREATE TABLE cuti (
+	idPeg CHAR(9) NOT NULL,
+	mulaiCuti DATE NOT NULL,
+	akhirCuti DATE NOT NULL,
+	keterangan VARCHAR NOT NULL,
+	status CHAR NOT NULL
+);
+
+CREATE TABLE perpesanan (
+	pengirim CHAR(9) NOT NULL,
+	penerima CHAR(9) NOT NULL,
+	subjek VARCHAR,
+	tanggal TIMESTAMP default current_timestamp,
+	isipesan VARCHAR,
+	dibaca CHAR NOT NULL
+);
+INSERT INTO pegawai VALUES ('P001', 'Bambang','Pamungkas','20-Aug-1983','Bogor','M','08567890422','1','S001','Aktif');
+INSERT INTO pegawai VALUES ('P002', 'Rahmat','Darmawan','19-Feb-1979','Jakarta','M','08136643228','2','S001','Aktif');
+INSERT INTO pegawai VALUES ('P003', 'Taufik','Hidayat','30-May-1977','Bekasi','M','08569932284','3','S003','Aktif');
+INSERT INTO pegawai VALUES ('P004', 'Rudi','Hartono','01-Jan-1973','Depok','M','08993456782','1','S002','Aktif');
+INSERT INTO pegawai VALUES ('P005', 'Susi','Susanti','14-Mar-1985','Tangerang','F','085700711003','2','S005','Cuti');
+
+INSERT INTO departemen VALUES ('1','HRD','P001');
+INSERT INTO departemen VALUES ('2','FINANSIAL','P005');
+INSERT INTO departemen VALUES ('3','HUMAS','P002');
+INSERT INTO departemen VALUES ('4','PRODUKSI','P004');
+
+INSERT INTO proyek VALUES ('1','A','1');
+INSERT INTO proyek VALUES ('2','B','1');
+INSERT INTO proyek VALUES ('3','C','2');
+INSERT INTO proyek VALUES ('4','D','2');
+INSERT INTO proyek VALUES ('5','E','4');
+INSERT INTO proyek VALUES ('6','F','3');
+
+INSERT INTO shift VALUES ('S001','Senin-Jumat');
+INSERT INTO shift VALUES ('S002','Selasa-Sabtu');
+INSERT INTO shift VALUES ('S003','Rabu-Minggu');
+INSERT INTO shift VALUES ('S004','Kamis-Senin');
+INSERT INTO shift VALUES ('S005','Jumat-Selasa');
+INSERT INTO shift VALUES ('S006','Sabtu-Rabu');
+INSERT INTO shift VALUES ('S007','Minggu-Kamis');
+
+INSERT INTO kinerja VALUES ('P001','1','sedang dikerjakan','21-Aug-2013');
+INSERT INTO kinerja VALUES ('P002','6','sedang dikerjakan','30-Mar-2013');
+INSERT INTO kinerja VALUES ('P003','6','selesai','21-Mar-2013');
+
+INSERT INTO tanggungan VALUES ('P001','Anjar Pamungkas','M','12-Jan-2000','Anak');
+INSERT INTO tanggungan VALUES ('P002','Iis Solihat','F','6-May-1983','Istri');
+INSERT INTO tanggungan VALUES ('P003','Ami Gumelar','F','9-Dec-1980','Istri');
+INSERT INTO tanggungan VALUES ('P003','Lisa Hidayat','F','13-Feb-2010','Anak');
+
+INSERT INTO gaji VALUES ('P001','3500000','200000','200000');
+INSERT INTO gaji VALUES ('P002','4500000','200000','200000');
+INSERT INTO gaji VALUES ('P003','3500000','200000','500000');
+INSERT INTO gaji VALUES ('P004','3000000');
+INSERT INTO gaji VALUES ('P005','3300000');
+
+INSERT INTO cuti VALUES ('P005','03-Feb-2013','20-Jan-2014','Hamil','Y');
+
+ALTER TABLE pegawai ADD CONSTRAINT pegawai_idPeg_PK PRIMARY KEY(idPeg);
+ALTER TABLE departemen ADD CONSTRAINT dept_idDept_PK PRIMARY KEY(idDept);
+ALTER TABLE departemen ADD CONSTRAINT dept_namaDept_PK UNIQUE(namaDept);
+ALTER TABLE departemen ADD CONSTRAINT dept_idMgr_FK FOREIGN KEY(idMgr) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+ALTER TABLE proyek ADD CONSTRAINT proyek_idPro_PK PRIMARY KEY(idPro);
+ALTER TABLE proyek ADD CONSTRAINT proyek_idDept_FK FOREIGN KEY(idDept) REFERENCES departemen(idDept);
+ALTER TABLE tanggungan ADD CONSTRAINT tanggungan_idPeg_namaTgn_PK PRIMARY KEY(idPeg,namaTgn);
+ALTER TABLE tanggungan ADD CONSTRAINT tanggungan_idPeg_FK FOREIGN KEY(idPeg) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+ALTER TABLE shift ADD CONSTRAINT shift_idShift_PK PRIMARY KEY(idShift);
+ALTER TABLE kinerja ADD CONSTRAINT kinerja_idPeg_idPro_PK PRIMARY KEY(idPeg,idPro);
+ALTER TABLE gaji ADD CONSTRAINT gaji_idPeg_PK PRIMARY KEY(idPeg);
+ALTER TABLE gaji ADD CONSTRAINT gaji_idPeg_FK FOREIGN KEY(idPeg) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+ALTER TABLE cuti ADD CONSTRAINT cuti_idPeg_mulaiCuti_PK PRIMARY KEY(idPeg,mulaiCuti);
+ALTER TABLE cuti ADD CONSTRAINT cuti_idPeg_FK FOREIGN KEY(idPeg) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+ALTER TABLE pegawai ADD CONSTRAINT pegawai_idDept_FK FOREIGN KEY(idDept) REFERENCES departemen(idDept);
+ALTER TABLE pegawai ADD CONSTRAINT pegawai_idShift_FK FOREIGN KEY(idShift) REFERENCES shift(idShift);
+ALTER TABLE perpesanan ADD CONSTRAINT perpesanan_pengirim_FK FOREIGN KEY(pengirim) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+ALTER TABLE perpesanan ADD CONSTRAINT perpesanan_penerima_FK FOREIGN KEY(penerima) REFERENCES pegawai(idPeg) ON DELETE CASCADE;
+
+INSERT INTO pegawai VALUES ('P006', 'Matt','Tuck','09-Sep-1981','Bandung','M','081385675620','2','S005','Aktif');
+INSERT INTO pegawai VALUES ('P007', 'Bruce','Dickinson','30-Mar-1977','Jakarta','M','081385675620','4','S007','Aktif');
+INSERT INTO pegawai VALUES ('P008', 'Slyvester','Stallone','03-Jan-1965','Bekasi','M','081385675620','1','S003','Aktif');
+INSERT INTO pegawai VALUES ('P009', 'Marilyn','Monroe','14-Apr-1981','Bandung','M','081385675620','3','S001','Aktif');
+INSERT INTO pegawai VALUES ('P010', 'Eyang','Subur','09-Sep-1981','Jakarta','M','081313131313','2','S005','Aktif');
+INSERT INTO pegawai VALUES ('P011', 'Dave','Robinson','31-Jul-1984','Serang','M','081383434320','3','S004','Aktif');
+INSERT INTO pegawai VALUES ('P012', 'Shred','Guitars','17-Jun-1977','Tangerang','F','081385675620','3','S003','Aktif');
+INSERT INTO pegawai VALUES ('P013', 'Bredd','Jarr','29-May-1985','Bogor','F','081385675620','2','S002','Aktif');
+INSERT INTO pegawai VALUES ('P014', 'Anjasmara','M','08-Jun-1977','Bandung','M','081385675620','1','S002','Cuti');
+INSERT INTO pegawai VALUES ('P015', 'Michael','Ballack','13-Feb-1979','Depok','M','081385675620','4','S006','Aktif');
+INSERT INTO pegawai VALUES ('P016', 'Matt','Tuck','09-Sep-1981','Bandung','M','081385675620','2','S005','Aktif');
+INSERT INTO pegawai VALUES ('P017', 'Matt','Tuck','09-Sep-1981','Bandung','M','081385675620','2','S005','Aktif');
+INSERT INTO pegawai VALUES ('P018', 'Matt','Tuck','09-Sep-1981','Bandung','M','081385675620','2','S005','Aktif');

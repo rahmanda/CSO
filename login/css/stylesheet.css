@@ -1,0 +1,135 @@
+/*---------------root begin------------------------*/
+h1, h2, h3, h4, h5 {
+	font-family: 'Tahoma', Arial, sans-serif;
+    color: #475d68;
+    text-shadow: 0 1px 0 #fff;
+    line-height: 10px
+}
+a {
+	text-decoration: none;
+}
+body,button,input,select,textarea {
+    font-family: 'Tahoma', Arial, sans-serif;
+    color: #222
+}
+h1 {
+	font-weight: bold;
+}
+/*================index.php style===================*/
+#box-login {
+    margin: 0 auto;
+    margin-top: 210px;
+    width: 400px;
+}
+#box-border {
+    margin-top: 15px;
+    background: url("../img/misc/shine-effect.png") repeat-x scroll 0 0 rgba(33,40,44,0.7);
+    border: 1px solid #25333c;
+    border-radius: 5px 5px 5px 5px;
+    padding: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.block-header {
+    background: url("../img/container/block/block-header-bg.png") repeat-x scroll top left #cfdee5;
+    min-height: 38px;
+    border: 1px solid #4b5e6b;
+    border-bottom: 1px solid #9ba6ab;
+    margin-bottom: -2px;
+    position: relative;
+    z-index: 5
+}
+.page-login {
+    background: url("../img/container/special-page-bg.png") no-repeat scroll top center #2b3237
+}
+.block-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    padding-left: 10px;
+    line-height: 37px
+}
+.label {
+	float: left;
+    display: block;
+    padding: 8px 0 0 4px;
+	margin-left: 4px;
+	margin-right: 30px;
+}
+.form input[type="text"],.form input[type="password"],.form textarea {
+    border: 1px solid #d1d1d1;
+    border-color: #aaa #CCCCCc #ccc #AAAAAA;
+    border-radius: 3px 3px 3px 3px;
+    line-height: 1.5em;
+    padding: 5px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset;
+	width: 60%;
+}
+.input {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-size: 13px;
+	color: #2a3640;
+	font-weight: bold;
+}
+.form-login {
+    background: none repeat scroll 0 0 #fafafa;
+    border-radius: 3px 3px 3px 3px;
+    position: relative;
+    padding: 0 10px;
+    border: 1px solid #4b5e6b
+}
+.actions {
+    margin: 0 -19px -10px -19px;
+    background: url("../img/container/block/block-actions-bg.png") repeat-x scroll bottom left transparent;
+    border-radius: 0 0 5px 5px;
+    height: 44px;
+    overflow: hidden
+}
+.actions ul {
+    list-style: none;
+    list-style-image: none;
+    padding: 0;
+    margin-top: 5px
+}
+.action-left {
+	float: left;
+	margin-left: 20px
+}
+.action-right {
+	float: right;
+	margin-right: 20px;
+}
+.button {
+    background: url("../img/buttons/button-blue.png") repeat-x scroll 0 0 #2d5672;
+    border-radius: 20px 20px 20px 20px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #111;
+    color: #fff!important;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+    height: 14px;
+	font-size: 12px;
+}
+input[type="submit"].button {
+height: 26px;
+}
+.button.reset {
+    background: url("../img/buttons/button-red.png") repeat-x scroll 0 0 #6b352b
+}
+/*=============error display================*/
+#error-number {
+    text-align: center;
+    margin-top: 150px
+}
+#error-number h1 {
+    color: #fff;
+    font-size: 50px;
+    text-shadow: 0 1px 0 #ccc,0 2px 0 #c9c9c9,0 3px 0 #bbb,0 4px 0 #b9b9b9,0 5px 0 #aaa,0 6px 1px rgba(0,0,0,.1),0 0 5px rgba(0,0,0,.1),0 1px 3px rgba(0,0,0,.3),0 3px 5px rgba(0,0,0,.2),0 5px 10px rgba(0,0,0,.25),0 10px 10px rgba(0,0,0,.2),0 20px 20px rgba(0,0,0,.15)
+}
+#error-text {
+    text-align: center;
+    margin-top: -20px
+}
