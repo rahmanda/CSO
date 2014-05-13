@@ -16,7 +16,7 @@ System Requirement:
 
 Petunjuk Instalasi:
 1. Terlebih dahulu pada komputer telah terinstall XAMPP yang telah diconfigurasikan pada POSTGRESQL.
-2. Edit password dan nama database di file config/koneksi.php
+2. Edit password dan nama database di file config/koneksi.php dan file login/config/koneksi.php
 3. Aktifkan Apache pada XAMPP.
 4. Copy folder SIK ini ke dalam folder htdoc pada XAMPP.
 5. Buka browser, ketik "localhost/SIK/" tanpa tanda kutip.
