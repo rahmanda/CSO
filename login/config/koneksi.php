@@ -1,3 +1,3 @@
 <?php 
-pg_connect("host=localhost user=postgres dbname=company password=MurihPusparum");
+pg_connect("host=localhost user=root dbname=your_database password=your_password");
 ?>
